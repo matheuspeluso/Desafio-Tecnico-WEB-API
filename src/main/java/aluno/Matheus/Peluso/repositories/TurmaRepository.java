@@ -14,6 +14,12 @@ public interface TurmaRepository extends JpaRepository <Turma, UUID>{
 	
 	@Query("SELECT COUNT(t) > 0 FROM Turma t WHERE t.numero = :numero")
 	boolean existsByNumero(@Param("numero") String numero);
+	
+	@Query("SELECT COUNT(t) > 0 FROM Turma t WHERE t.numero = :numero AND t.id <> :id")
+	boolean existsByNumeroAndIdNot(@Param("numero") String numero, @Param("id") UUID id);
+
+
+	
 
 
 }

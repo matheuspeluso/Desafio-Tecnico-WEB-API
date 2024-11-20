@@ -41,4 +41,35 @@ public class TurmaService {
 		
 		return response;
 	}
+	
+	public TurmaResponseDto editarTurma(UUID id, TurmaRequestDto dto) {
+		
+		var turmaExistente = turmaRepostory.findById(id).orElse(null);
+		
+		if(turmaExistente == null) {
+			throw new IllegalArgumentException("Turma não encontrada.");
+		}
+		
+		// Verifica se já existe outra turma com o mesmo número
+	    if (turmaRepostory.existsByNumeroAndIdNot(dto.getNumero(), id)) {
+	        throw new IllegalArgumentException("Já existe uma turma cadastrada com esse número. Tente outro.");
+	    }
+		
+		turmaExistente.setNumero(dto.getNumero());
+		turmaExistente.setMateria(dto.getMateria());
+		turmaExistente.setAnoLetivo(dto.getAnoLetivo());
+		turmaExistente.setNivel(dto.getNivel());
+		
+		turmaRepostory.save(turmaExistente);
+		
+		var response = new TurmaResponseDto();
+		response.setId(turmaExistente.getId());
+		response.setNumero(turmaExistente.getNumero());
+		response.setMateria(turmaExistente.getMateria());
+		response.setAnoLetivo(turmaExistente.getAnoLetivo());
+		response.setNivel(turmaExistente.getNivel().toString());
+		response.setMensagem("Turma editada com sucesso.");
+		
+		return response;
+	}
 }

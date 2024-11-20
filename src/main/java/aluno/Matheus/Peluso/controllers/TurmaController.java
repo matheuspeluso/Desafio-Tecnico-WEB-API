@@ -32,8 +32,8 @@ public class TurmaController {
 	}
 	
 	@PutMapping("/editar/{id}")
-	public void editar(@PathVariable @Valid UUID id, TurmaRequestDto dto) {
-		//TODO
+	public TurmaResponseDto editar(@PathVariable @Valid UUID id, TurmaRequestDto dto) {
+		return turmaService.editarTurma(id, dto);
 	}
 	
 	@DeleteMapping("/deletar/{id}")
