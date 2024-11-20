@@ -27,9 +27,10 @@ public class LoadDataComponent implements ApplicationRunner{
 		
 		var turmaCadastro = new Turma();
 		turmaCadastro.setId(UUID.fromString("cb852aaf-f90b-4d5f-94f7-f50680e8dc51"));
-		turmaCadastro.setNumero("1");
+		turmaCadastro.setMateria("Java Web Developer");
+		turmaCadastro.setNumero("01");
 		turmaCadastro.setAnoLetivo("2024");
-		turmaCadastro.setNivel(Nivel.BASICO);
+		turmaCadastro.setNivel(Nivel.AVANCADO);
 		
 		var alunoCadastro = new Aluno();
 		alunoCadastro.setId(UUID.fromString("1af39445-7d84-4373-a992-351e88914272"));

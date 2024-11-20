@@ -23,6 +23,9 @@ public class Turma {
 	@Column(name = "id")
 	private UUID id;
 	
+	@Column(name = "materia",length = 50, nullable = false)
+	private String materia;
+	
 	@Column(name = "numero", length = 10, nullable = false)
 	private String numero;
 	
