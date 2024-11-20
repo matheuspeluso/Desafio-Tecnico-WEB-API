@@ -72,4 +72,16 @@ public class TurmaService {
 		
 		return response;
 	}
+	
+	public String deletarTurma(UUID id){
+		
+		var turma = turmaRepostory.findById(id);
+		
+		if(!turma.isPresent()) {
+			throw new IllegalArgumentException("Turma não encontrada, verifique o Id informado.");
+		}
+		
+		turmaRepostory.deleteById(id);
+		return "Turma excluida com sucesso.";
+	}
 }

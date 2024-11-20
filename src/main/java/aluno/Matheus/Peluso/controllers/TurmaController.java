@@ -37,8 +37,8 @@ public class TurmaController {
 	}
 	
 	@DeleteMapping("/deletar/{id}")
-	public void deletar(@PathVariable UUID id) {
-		//TODO
+	public String deletar(@PathVariable UUID id) {
+		return turmaService.deletarTurma(id);
 	}
 	
 	@GetMapping("/consultar")
