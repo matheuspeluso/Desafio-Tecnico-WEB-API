@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import aluno.Matheus.Peluso.domain.models.dtos.TurmaRequestDto;
 import aluno.Matheus.Peluso.domain.models.dtos.TurmaResponseDto;
+import aluno.Matheus.Peluso.domain.models.dtos.TurmaResponseGetDto;
 
 public interface TurmaService {
 	
@@ -14,7 +15,7 @@ public interface TurmaService {
 	
 	public TurmaResponseDto deletarTurma(UUID id);
 	
-	public List<TurmaResponseDto> consultarTodasTurmas();
+	public List<TurmaResponseGetDto> consultarTodasTurmas();
 	
-	public TurmaResponseDto consultarTurmaPorId(UUID id);
+	public TurmaResponseGetDto consultarTurmaPorId(UUID id);
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import aluno.Matheus.Peluso.domain.contracts.services.TurmaService;
 import aluno.Matheus.Peluso.domain.models.dtos.TurmaRequestDto;
 import aluno.Matheus.Peluso.domain.models.dtos.TurmaResponseDto;
+import aluno.Matheus.Peluso.domain.models.dtos.TurmaResponseGetDto;
 import jakarta.validation.Valid;
 
 @RestController
@@ -41,12 +42,12 @@ public class TurmaController {
 	}
 	
 	@GetMapping("/consultar")
-	public List<TurmaResponseDto> consultar() {
+	public List<TurmaResponseGetDto> consultar() {
 		return turmaService.consultarTodasTurmas();
 	}
 	
 	@GetMapping("/consultar/{id}")
-	public TurmaResponseDto consultarPorId(@PathVariable UUID id) {
+	public TurmaResponseGetDto consultarPorId(@PathVariable UUID id) {
 		return turmaService.consultarTurmaPorId(id);
 	}
 

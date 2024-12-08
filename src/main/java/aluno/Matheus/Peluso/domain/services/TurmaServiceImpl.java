@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import aluno.Matheus.Peluso.domain.contracts.services.TurmaService;
 import aluno.Matheus.Peluso.domain.models.dtos.TurmaRequestDto;
 import aluno.Matheus.Peluso.domain.models.dtos.TurmaResponseDto;
+import aluno.Matheus.Peluso.domain.models.dtos.TurmaResponseGetDto;
 import aluno.Matheus.Peluso.domain.models.entities.Turma;
 import aluno.Matheus.Peluso.infrastructure.repositories.TurmaRepository;
 
@@ -97,39 +98,37 @@ public class TurmaServiceImpl implements TurmaService {
 		return response;
 	}
 	
-	public List<TurmaResponseDto> consultarTodasTurmas(){
+	public List<TurmaResponseGetDto> consultarTodasTurmas(){
 		List<Turma> turmas = turmaRepository.findAll();
 		
 		//convertendo para dto
-		List<TurmaResponseDto> responseList = new ArrayList<TurmaResponseDto>();
+		List<TurmaResponseGetDto> responseList = new ArrayList<TurmaResponseGetDto>();
 
 		
 		for(Turma turma : turmas) {
-			var response = new TurmaResponseDto();
+			var response = new TurmaResponseGetDto();
             response.setId(turma.getId());
             response.setMateria(turma.getMateria());
             response.setNumero(turma.getNumero());
             response.setAnoLetivo(turma.getAnoLetivo());
             response.setNivel(turma.getNivel().toString());
-            response.setMensagem("Consulta realizada com sucesso.");
             
             responseList.add(response);
 		}
 		return responseList;
 	}
 	
-	public TurmaResponseDto consultarTurmaPorId(UUID id) {
+	public TurmaResponseGetDto consultarTurmaPorId(UUID id) {
 		var turma = turmaRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Turma não encontrada. Verifique o Id."));
 		
 		// Conversão para DTO
-        var response = new TurmaResponseDto();
+        var response = new TurmaResponseGetDto();
         response.setId(turma.getId());
         response.setMateria(turma.getMateria());
         response.setNumero(turma.getNumero());
         response.setAnoLetivo(turma.getAnoLetivo());
         response.setNivel(turma.getNivel().toString());
-        response.setMensagem("Consulta realizada com sucesso.");
         
         return response;
 	}
