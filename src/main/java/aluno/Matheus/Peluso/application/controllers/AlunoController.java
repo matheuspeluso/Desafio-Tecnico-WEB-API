@@ -1,4 +1,4 @@
-package aluno.Matheus.Peluso.controllers;
+package aluno.Matheus.Peluso.application.controllers;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import aluno.Matheus.Peluso.dtos.AlunoRequestDto;
-import aluno.Matheus.Peluso.entities.Aluno;
+import aluno.Matheus.Peluso.domain.models.dtos.AlunoRequestDto;
+import aluno.Matheus.Peluso.domain.models.entities.Aluno;
 import jakarta.validation.Valid;
 
 @RestController

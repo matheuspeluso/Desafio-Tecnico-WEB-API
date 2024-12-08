@@ -1,4 +1,4 @@
-package aluno.Matheus.Peluso.configurations;
+package aluno.Matheus.Peluso.infrastructure.configurations;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

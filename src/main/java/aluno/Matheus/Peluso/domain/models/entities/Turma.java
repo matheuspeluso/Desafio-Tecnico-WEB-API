@@ -1,10 +1,10 @@
-package aluno.Matheus.Peluso.entities;
+package aluno.Matheus.Peluso.domain.models.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import aluno.Matheus.Peluso.enums.Nivel;
+import aluno.Matheus.Peluso.domain.models.enums.Nivel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

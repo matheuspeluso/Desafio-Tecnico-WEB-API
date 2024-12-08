@@ -1,4 +1,4 @@
-package aluno.Matheus.Peluso.enums;
+package aluno.Matheus.Peluso.domain.models.enums;
 
 public enum Nivel {
 	BASICO,

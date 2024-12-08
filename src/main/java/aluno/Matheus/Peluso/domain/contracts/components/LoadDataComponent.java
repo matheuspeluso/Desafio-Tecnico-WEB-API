@@ -1,4 +1,4 @@
-package aluno.Matheus.Peluso.components;
+package aluno.Matheus.Peluso.domain.contracts.components;
 
 import java.util.UUID;
 
@@ -7,11 +7,11 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import aluno.Matheus.Peluso.entities.Aluno;
-import aluno.Matheus.Peluso.entities.Turma;
-import aluno.Matheus.Peluso.enums.Nivel;
-import aluno.Matheus.Peluso.repositories.AlunoRepository;
-import aluno.Matheus.Peluso.repositories.TurmaRepository;
+import aluno.Matheus.Peluso.domain.models.entities.Aluno;
+import aluno.Matheus.Peluso.domain.models.entities.Turma;
+import aluno.Matheus.Peluso.domain.models.enums.Nivel;
+import aluno.Matheus.Peluso.infrastructure.repositories.AlunoRepository;
+import aluno.Matheus.Peluso.infrastructure.repositories.TurmaRepository;
 
 @Component
 public class LoadDataComponent implements ApplicationRunner{

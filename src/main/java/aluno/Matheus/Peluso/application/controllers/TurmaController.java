@@ -1,4 +1,4 @@
-package aluno.Matheus.Peluso.controllers;
+package aluno.Matheus.Peluso.application.controllers;
 
 import java.util.List;
 import java.util.UUID;
@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import aluno.Matheus.Peluso.dtos.TurmaRequestDto;
-import aluno.Matheus.Peluso.dtos.TurmaResponseDto;
-import aluno.Matheus.Peluso.entities.Turma;
-import aluno.Matheus.Peluso.services.TurmaService;
+import aluno.Matheus.Peluso.domain.contracts.services.TurmaService;
+import aluno.Matheus.Peluso.domain.models.dtos.TurmaRequestDto;
+import aluno.Matheus.Peluso.domain.models.dtos.TurmaResponseDto;
 import jakarta.validation.Valid;
 
 @RestController
@@ -37,18 +36,18 @@ public class TurmaController {
 	}
 	
 	@DeleteMapping("/deletar/{id}")
-	public String deletar(@PathVariable UUID id) {
+	public TurmaResponseDto deletar(@PathVariable UUID id) {
 		return turmaService.deletarTurma(id);
 	}
 	
 	@GetMapping("/consultar")
-	public List<Turma> consultar() {
-		return null;
+	public List<TurmaResponseDto> consultar() {
+		return turmaService.consultarTodasTurmas();
 	}
 	
 	@GetMapping("/consultar/{id}")
-	public Turma consultarPorId(@PathVariable UUID id) {
-		return null;
+	public TurmaResponseDto consultarPorId(@PathVariable UUID id) {
+		return turmaService.consultarTurmaPorId(id);
 	}
 
 }

@@ -1,6 +1,5 @@
-package aluno.Matheus.Peluso.dtos;
+package aluno.Matheus.Peluso.domain.models.dtos;
 
-import java.util.List;
 import java.util.UUID;
 
 import lombok.Data;

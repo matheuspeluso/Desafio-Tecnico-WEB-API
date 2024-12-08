@@ -1,4 +1,4 @@
-package aluno.Matheus.Peluso.entities;
+package aluno.Matheus.Peluso.domain.models.entities;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package aluno.Matheus.Peluso.repositories;
+package aluno.Matheus.Peluso.infrastructure.repositories;
 
 import java.util.UUID;
 
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import aluno.Matheus.Peluso.entities.Turma;
+import aluno.Matheus.Peluso.domain.models.entities.Turma;
 
 @Repository
 public interface TurmaRepository extends JpaRepository <Turma, UUID>{

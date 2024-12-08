@@ -1,4 +1,4 @@
-package aluno.Matheus.Peluso.dtos;
+package aluno.Matheus.Peluso.domain.models.dtos;
 
 import java.util.UUID;
 

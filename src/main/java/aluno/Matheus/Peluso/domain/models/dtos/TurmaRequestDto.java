@@ -1,7 +1,6 @@
-package aluno.Matheus.Peluso.dtos;
+package aluno.Matheus.Peluso.domain.models.dtos;
 
-import aluno.Matheus.Peluso.enums.Nivel;
-import jakarta.persistence.Column;
+import aluno.Matheus.Peluso.domain.models.enums.Nivel;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
