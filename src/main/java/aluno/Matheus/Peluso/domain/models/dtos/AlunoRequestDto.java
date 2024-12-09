@@ -1,6 +1,7 @@
 package aluno.Matheus.Peluso.domain.models.dtos;
 
 import java.util.List;
+import java.util.UUID;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -24,5 +25,6 @@ public class AlunoRequestDto {
 	@NotEmpty(message = "Por favor, informe o email do aluno.")
 	private String email;
 	
-	private List<String> turmas;
+	@NotEmpty(message = "Por favor, informe pelo menos uma turma.")
+    private List<UUID> turmas;
 }
