@@ -13,6 +13,7 @@ import aluno.Matheus.Peluso.domain.models.dtos.TurmaResponseDto;
 import aluno.Matheus.Peluso.domain.models.dtos.TurmaResponseGetDto;
 import aluno.Matheus.Peluso.domain.models.entities.Turma;
 import aluno.Matheus.Peluso.infrastructure.repositories.TurmaRepository;
+import jakarta.transaction.Transactional;
 
 
 @Service
@@ -84,6 +85,10 @@ public class TurmaServiceImpl implements TurmaService {
 		var turmaExistente = turmaRepository.findById(id)
 		        .orElseThrow(() -> new IllegalArgumentException("Turma não encontrada, verifique o Id informado."));
 
+		// Verifica se a turma possui alunos matriculados
+	    if(ExisteAlunoNaTurma(id)) {
+	    	throw new IllegalArgumentException("Não é possível excluir turma. Ela possui alunos matriculados.");
+	    }
 		
 		turmaRepository.deleteById(id);
 		
@@ -131,6 +136,11 @@ public class TurmaServiceImpl implements TurmaService {
         response.setNivel(turma.getNivel().toString());
         
         return response;
+	}
+	
+	@Transactional
+	public boolean ExisteAlunoNaTurma(UUID idTurma) {
+		return turmaRepository.existeAlunoMatriculadoNaTurma(idTurma);
 	}
 	
 }

@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import aluno.Matheus.Peluso.domain.contracts.services.AlunoService;
+import aluno.Matheus.Peluso.domain.models.dtos.AlunoMatriculaRequestDto;
 import aluno.Matheus.Peluso.domain.models.dtos.AlunoRequestDto;
 import aluno.Matheus.Peluso.domain.models.dtos.AlunoResponseDto;
-import aluno.Matheus.Peluso.domain.models.entities.Aluno;
+import aluno.Matheus.Peluso.domain.models.dtos.AlunoResponseGetDto;
 import jakarta.validation.Valid;
 
 @RestController
@@ -30,31 +31,34 @@ public class AlunoController {
 	}
 	
 	@PutMapping("/editar/{id}")
-	public void editar(@PathVariable @Valid UUID id, @RequestBody AlunoRequestDto dto) {
-		//TODO
+	public AlunoResponseDto editar(@PathVariable @Valid UUID id, @RequestBody AlunoRequestDto dto) {
+		return alunoService.editarAluno(id, dto);
 	}
 	
 	@DeleteMapping("/deletar/{id}")
-	public void deletar(@PathVariable UUID id) {
-		//TODO
+	public AlunoResponseDto deletar(@PathVariable UUID id) {
+		return alunoService.deletarAluno(id);
 	}
 	
 	@GetMapping("/consultar")
-	public List<Aluno> consultar() {
-		return null;
-		//TODO
+	public List<AlunoResponseGetDto> consultar() {
+		return alunoService.consultarTodosAlunos();
+		
 	}
 	
 	@GetMapping("/consultar/{id}")
-	public void consultarPorId(@PathVariable UUID id) {
-		//TODO
+	public AlunoResponseGetDto consultarPorId(@PathVariable UUID id) {
+		return alunoService.consultarAlunoPorId(id);
 	}
 	
-	@PutMapping("matricularAluno")
-	public String MatricularAluno(UUID idAluno, UUID idTurma) {
-		return alunoService.matricularAlunoEmTurma(idAluno, idTurma);
+	@PutMapping("/matricular-aluno")
+	public String matricularAluno(@RequestBody AlunoMatriculaRequestDto dto) {
+		return alunoService.matricularAlunoEmTurma(dto.getAlunoId(),dto.getTurmaId());
 	}
 	
+	@PutMapping("/desmatricular-aluno")
+	public String desmatricularAluno(@RequestBody AlunoMatriculaRequestDto dto) {
+		return alunoService.desmatricularAlunoDeTurma(dto.getAlunoId(),dto.getTurmaId());
+	}
 	
-
 }

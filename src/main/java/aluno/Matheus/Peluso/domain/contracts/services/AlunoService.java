@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import aluno.Matheus.Peluso.domain.models.dtos.AlunoRequestDto;
 import aluno.Matheus.Peluso.domain.models.dtos.AlunoResponseDto;
+import aluno.Matheus.Peluso.domain.models.dtos.AlunoResponseGetDto;
 
 public interface AlunoService {
 
@@ -14,9 +15,9 @@ public interface AlunoService {
 	
 	public AlunoResponseDto deletarAluno(UUID id);
 	
-	public List<AlunoResponseDto> consultarTodosAlunos();
+	public List<AlunoResponseGetDto> consultarTodosAlunos();
 	
-	public AlunoResponseDto consultarAlunoPorId();
+	public AlunoResponseGetDto consultarAlunoPorId(UUID id);
 	
 	public String matricularAlunoEmTurma(UUID alunoId, UUID turmaId);
 
