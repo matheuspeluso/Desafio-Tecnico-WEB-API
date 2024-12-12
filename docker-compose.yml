@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  api-desafio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8090:8090" # Porta para acessar a aplicação Spring Boot
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bd_apiDesafio
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: coti
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+  postgres: # Serviço do PostgreSQL
+    image: postgres:latest
+    container_name: postgres_api_desafio
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: coti
+      POSTGRES_DB: bd_apiDesafio
+    ports:
+      - "5432:5432" # Porta do PostgreSQL
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  pgadmin: # Serviço do pgAdmin
+    image: dpage/pgadmin4
+    container_name: pgadmin_api_desafio
+    ports:
+      - "5050:80" # Porta para acessar o pgAdmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
